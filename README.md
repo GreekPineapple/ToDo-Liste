@@ -44,4 +44,8 @@ npm run build
 ```sh
 npm run lint
 ```
-in src run node database.js to connect database
+### Start backend
+
+```sh
+node server.js
+```
