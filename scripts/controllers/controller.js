@@ -31,10 +31,22 @@ exports.findOne = (req, res) => {
   
 };
 
-// Update a Tutorial by the id in the request
-exports.update = (req, res) => {
+// Update a Todo by the id in the request
+  exports.update = async (req, res) => {
+    const id = req.params.id;
+    console.log("Controller: Updating Todo with ID:", id);
   
-};
+    try {
+      const updatedTodo = await Todo.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+      if (!updatedTodo) {
+        return res.status(404).json({ error: "Todo not found" });
+      }
+      res.json(updatedTodo);
+    } catch (error) {
+      console.error("Update Error: ", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
 
 // Delete a ToDO with the specified id in the request
 exports.delete = async (req, res) => {

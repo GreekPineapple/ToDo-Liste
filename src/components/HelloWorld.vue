@@ -89,7 +89,7 @@ export default defineComponent({
       const todo = this.taskList.find((todo) => todo.id.toString() == itemID)
       if (todo) {
         todo.status = status;
-        // this.updateToDo()
+        this.updateToDo(todo)
       } else {
         console.error(`Todo with id ${itemID} not found`);
       }
@@ -105,28 +105,18 @@ export default defineComponent({
           console.log(error)
         })
     }, */
-/*     updateToDo () {
-      for (let i = 0; i < this.taskList.length; i++) {
-        let id = this.taskList[i].id
-        let status = this.taskList[i].status
-        let deadline = this.taskList[i].deadline
-        let deadlineDate = new Date(deadline)
-        let now = new Date("2023-01-15")
-        now.setHours(0, 0, 0, 0)
-        deadlineDate.setHours(0)
-        let newtime = (deadlineDate.getTime() - now.getTime()) / 86400000
-        console.log(now)
-        console.log(deadlineDate)
-        console.log(newtime)
-        axios.put(`/api/edit?id=${id}&status=${status}&time=${newtime}`)
-          .then((response) => {
-            console.log(response)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-    }, */
+    updateToDo (todo: Task) {
+      axios.put(`http://localhost:8080/api/todos/${todo.id}`, {
+        status: todo.status,
+        time: todo.time
+       },)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }, 
     deleteToDo (id: number) {
       this.taskList = this.taskList.filter(todo => todo.id !== id)
       axios.delete(`http://localhost:8080/api/todos/${id}`)
