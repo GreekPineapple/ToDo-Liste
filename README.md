@@ -44,14 +44,27 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+
+### Start Frontend
+
+```sh
+npm run dev
+```
 ### Start backend
 
 ```sh
 node server.js
 ```
-
 ### Start MongoDB (Mac)
 
 ```sh
-brew services start mongodb-community@7.0
+brew services start mongodb-community
+```
+
+### Stop MongoDB (Mac)
+
+```sh
+brew services stop mongodb-community
 ```
