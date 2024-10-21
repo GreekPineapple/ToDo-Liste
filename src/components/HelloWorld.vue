@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col" @drop="onDrop($event, 1)" @dragover.prevent @dragenter.prevent>
         <h4>TODO</h4>
-        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable @dragstart="startDrag($event, todo)" v-bind:class="{todo: todo.status==1}">
+        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable="true" @dragstart="startDrag($event, todo)" v-bind:class="{todo: todo.status==1}">
         <ion-icon name="trash-bin-outline" class="trash" @click="deleteToDo(todo.id)"></ion-icon>
           <div class="text">
             <p>{{todo.task}}</p>
@@ -29,7 +29,7 @@
       </div>
       <div class="col" @drop="onDrop($event, 2)" @dragover.prevent @dragenter.prevent>
         <h4> DOING </h4>
-        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable @dragstart="startDrag($event, todo)" v-bind:class="{doing: todo.status==2}">
+        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable="true" @dragstart="startDrag($event, todo)" v-bind:class="{doing: todo.status==2}">
         <ion-icon name="trash-bin-outline" class="trash" @click="deleteToDo(todo.id)"></ion-icon>  
          <div class="text">
             <p>{{todo.task}}</p>
@@ -39,7 +39,7 @@
       </div>
       <div class="col" @drop="onDrop($event, 3)" @dragover.prevent @dragenter.prevent>
         <h4> DONE </h4>
-        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable @dragstart="startDrag($event, todo)" v-bind:class="{done: todo.status==3}">
+        <div class="card" v-for="todo in taskList" v-bind:key="todo.id" v-bind:for="todo.id" draggable="true" @dragstart="startDrag($event, todo)" v-bind:class="{done: todo.status==3}">
         <ion-icon name="trash-bin-outline" class="trash" @click="deleteToDo(todo.id)"></ion-icon>
           <div class="text">
             <p>{{todo.task}}</p>
